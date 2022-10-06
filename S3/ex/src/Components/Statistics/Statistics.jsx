@@ -14,12 +14,17 @@ const Statistics = ({good,bad,neutral}) => {
   return (
     <div>
       <h1>Statistics</h1>
-      <StatisticsLine text = 'good' value = {good} />
-      <StatisticsLine text = 'neutral' value = {neutral} />
-      <StatisticsLine text = 'bad' value = {bad} />
-      <StatisticsLine text = 'all' value ={good+bad+neutral}  />
-      <StatisticsLine text = 'average' value ={(good-bad)/(good+neutral+bad)}  />
-      <StatisticsLine text = 'positive' value ={(good /(good+neutral+bad))*100}  />
+      < table >
+      <tbody>
+      <tr><td><StatisticsLine text = 'good' value = {good} /></td></tr>
+      <tr><td><StatisticsLine text = 'neutral' value = {neutral} /></td></tr>
+      <tr><td><StatisticsLine text = 'bad' value = {bad} /></td></tr>
+      <tr><td><StatisticsLine text = 'all' value ={good+bad+neutral}  /></td></tr>
+      <tr><td><StatisticsLine text = 'average' value ={(good-bad)/(good+neutral+bad)}  /></td></tr>
+      <tr><td><StatisticsLine text = 'positive' value ={(good /(good+neutral+bad))*100}  /></td></tr>
+      </tbody>
+      </table>
+      
     </div>
   )
 }
