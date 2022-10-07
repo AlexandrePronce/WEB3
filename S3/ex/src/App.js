@@ -1,13 +1,16 @@
-import React from 'react';
-import { useState } from 'react'
+//import React from 'react';
+import React, { useState, useEffect } from 'react';
+//import React, {  useEffect } from 'react';
 import Header from './Components/Header/Header';
 import Statistics from './Components/Statistics/Statistics';
 import Buttons from './Components/Buttons/Buttons';
+import Loading from './Components/Loading/loading';
 const App = () => {
   // enregistrer les clics de chaque bouton dans un état différent
   const [good, setGood] = useState(0)
   const [neutral, setNeutral] = useState(0)
   const [bad, setBad] = useState(0)
+ let loading = true ;
   const addGood =()=> {
     const inc = good +1 ;
     setGood(inc);
@@ -22,6 +25,17 @@ const App = () => {
     const inc = bad +1 ;
     setBad(inc);
 
+  }
+  useEffect(() => {
+    setTimeout(() => {
+     loading = false;
+    }, 30000);
+    console.log('test');
+  });
+  if(loading ){
+    return(
+      <Loading/>
+    )
   }
 
   return (
