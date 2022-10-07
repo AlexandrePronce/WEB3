@@ -10,7 +10,8 @@ const App = () => {
   const [good, setGood] = useState(0)
   const [neutral, setNeutral] = useState(0)
   const [bad, setBad] = useState(0)
- let loading = true ;
+  const[loading,setLoading] = useState(true)
+ 
   const addGood =()=> {
     const inc = good +1 ;
     setGood(inc);
@@ -26,13 +27,11 @@ const App = () => {
     setBad(inc);
 
   }
-  useEffect(() => {
-    setTimeout(() => {
-     loading = false;
-    }, 30000);
-    console.log('test');
-  });
+
   if(loading ){
+    setTimeout(() => {
+      setLoading(false);
+     }, 3000);
     return(
       <Loading/>
     )
