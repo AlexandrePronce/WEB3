@@ -3,13 +3,15 @@ import Name from './Components/Name/Name'
 
 const App = () => {
   const [persons, setPersons] = useState([
-    { name: 'Arto Hellas' , id : 0 }
+    { name: 'Arto Hellas' , id : 0 , phone : '101010'}
   ]) 
   const [newName, setNewName] = useState('')
+  const [newPhonenumber , setPhonenumber] = useState('')
   const addName = (event) => {
     event.preventDefault()
     const nameObject = {
       name: newName ,
+      phone : newPhonenumber ,
       id: persons.length + 1,
     }
     if(newName !==""){
@@ -22,6 +24,7 @@ const App = () => {
         console.log("test")
         setPersons(persons.concat(nameObject))
         setNewName('')
+        setPhonenumber('')
       }
       
     }
@@ -31,6 +34,10 @@ const App = () => {
   const handleNameChange = (event) => {
     console.log(event.target.value)
       setNewName(event.target.value)
+  }
+  const handlePhoneChange = (event) => {
+    console.log(event.target.value)
+      setPhonenumber(event.target.value)
   }
 
   return (
@@ -42,6 +49,10 @@ const App = () => {
           value={newName}
           onChange={handleNameChange}
         />
+        phone: <input
+          value={newPhonenumber}
+          onChange={handlePhoneChange}
+        />
         </div>
         <div>
           <button type="submit">add</button>
@@ -50,7 +61,7 @@ const App = () => {
       <h2>Numbers</h2>
       <ul>
         {persons.map(person =>
-          <Name key={person.id} name={person.name}  />
+          <Name key={person.id} name={person.name} phoneNumber = {person.phone} />
         )}
       </ul>
     </div>
